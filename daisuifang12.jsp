@@ -119,7 +119,7 @@ table.t1 tr.a1{
 	//System.out.println(curTime.toString());
 	if(CurrPage2==CountPage2){
 		SQL = "select * from "
-				+"(select * from (select* from daisuifang where time='12' and (complete='0' or complete='1') and shuming='"+shuming+"' and begin<='"+curTime.toString()+"' and end >='"+curTime.toString()+"'  order by liudate asc,gaowei descc) as a "
+				+"(select * from (select* from daisuifang where time='12' and (complete='0' or complete='1') and shuming='"+shuming+"' and begin<='"+curTime.toString()+"' and end >='"+curTime.toString()+"'  order by liudate asc,gaowei desc) as a "
 				+" union all " 
 				+"select * from (select * from daisuifang where time='12' and (complete='0' or complete='1') and shuming!='"+shuming+"' and begin<='"+curTime.toString()+"' and end >='"+curTime.toString()+"' order by liudate asc,gaowei desc) as b)as c" 
 				+" limit "+PageSize2*(CurrPage2-1)+","+CountRow2;
@@ -130,7 +130,8 @@ table.t1 tr.a1{
 				+" union all " 
 				+"select * from (select * from daisuifang where time='12' and (complete='0' or complete='1') and shuming!='"+shuming+"' and begin<='"+curTime.toString()+"' and end >='"+curTime.toString()+"' order by liudate asc,gaowei desc) as b)as c"
 				+" limit "+PageSize2*(CurrPage2-1)+","+CurrPage2*PageSize2;
-	}//System.out.println(SQL);
+	}
+	System.out.println(SQL);
 	//SQL = "select * from pre_forum_forum order by fid asc limit 5 where fid>= "+"("+"Select MAX(fid) From (Select * From pre_forum_forum order by fid in asc limit "+n.toString()+") as Class )";
 	ResultSet Rs = selectall.executeQuery(SQL);
 	while(Rs.next()){ %>
